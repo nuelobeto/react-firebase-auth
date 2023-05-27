@@ -69,7 +69,7 @@ const Login = () => {
         />
         <div className="alt-action">
           <p>
-            Don't have an account? <Link to={"/"}>Sign up</Link>
+            Don't have an account? <Link to={"/signup"}>Sign up</Link>
           </p>
         </div>
       </AuthForm>

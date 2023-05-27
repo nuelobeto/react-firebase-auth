@@ -25,7 +25,11 @@ const signup = async ({ email, password, username, avatar }: SignupT) => {
   const token = await user.getIdToken();
 
   if (user) {
-    await sendEmailVerification(user);
+    const actionCodeSettings = {
+      url: "https://react-firebaze-auth.netlify.app/login",
+      handleCodeInApp: true,
+    };
+    await sendEmailVerification(user, actionCodeSettings);
   }
 
   const storageRef = ref(storage, `${user.uid}`);
@@ -62,7 +66,11 @@ const login = async ({ email, password }: LoginT) => {
 };
 
 const sendPasswordResetLink = async (email: string) => {
-  await sendPasswordResetEmail(auth, email);
+  const actionCodeSettings = {
+    url: "https://react-firebaze-auth.netlify.app/reset-password",
+    handleCodeInApp: true,
+  };
+  await sendPasswordResetEmail(auth, email, actionCodeSettings);
 };
 
 const resetPassword = async (password: string) => {
