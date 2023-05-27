@@ -18,7 +18,10 @@ const AppRoutes = () => {
 
   useEffect(() => {
     if (continueUrl) {
-      const path = continueUrl.replace("http://localhost:5173", "");
+      const path = continueUrl.replace(
+        "https://react-firebaze-auth.netlify.app/",
+        ""
+      );
       navigate(path);
     }
   }, [continueUrl]);
